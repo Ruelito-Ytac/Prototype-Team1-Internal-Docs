@@ -273,30 +273,30 @@
 }
 #section_wrapper #section_main_contents #create_section_block ul li > div div p {
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   color: #7d949d;
   display: -webkit-box;
   font: 14px/20px "Roboto-Medium";
+  -webkit-line-clamp: 1;
   margin: 0 0 0;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #section_wrapper #section_main_contents #create_section_block ul li > div div h3 {
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   align-items: center;
+  -webkit-box-orient: vertical;
   display: -webkit-box;
   display: flex;
+  -webkit-line-clamp: 1;
   margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #section_wrapper #section_main_contents #create_section_block ul li > div div h3 a {
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   color: #14b8a6;
   display: -webkit-box;
   font: 16px/20px "Roboto-Medium";
+  -webkit-line-clamp: 1;
   margin-right: 30px;
   max-width: 400px;
   overflow: hidden;
