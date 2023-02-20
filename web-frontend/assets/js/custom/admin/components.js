@@ -197,6 +197,14 @@ const toggleComments = (event)=> {
     }
 }
 
+const focusInput = (input)=> {
+    input.classList.add("input_focused");
+}
+
+const blurInput = (input)=> {
+    input.classList.remove("input_focused");
+}
+
 updateSectionTitle();
 
 /* EVENTS */
@@ -207,7 +215,6 @@ document.querySelector(".title_block button").addEventListener("click", () => {
     window.location.href = "/web-frontend/views/admin/component_preview.html";
 });
 
-
 $(function(){
     /* Onload focus Description textarea if 0 size */
     if(components_count < ITEMS.second){
@@ -215,4 +222,27 @@ $(function(){
     }
     
     document.getElementById("section_details").focus();
+
+    /* Focus the description/content when Enter key is pressed from tab title input box */
+    $("body").on("keypress", ".title_tab_input", function(e) {
+        /* When enter key is pressed */
+        if(e.which === 13){
+            $(this).closest(".update_tab_form").find(".rx-editor").focus();
+            return false;  
+        }
+    });
+});
+
+document.getElementById("section_title").addEventListener("focus", function(){
+    focusInput(this);
+});
+document.getElementById("section_title").addEventListener("blur", function(){
+    blurInput(this);
+});
+
+document.getElementById("section_details").addEventListener("focus", function(){
+    focusInput(this);
+});
+document.getElementById("section_details").addEventListener("blur", function(){
+    blurInput(this);
 });
