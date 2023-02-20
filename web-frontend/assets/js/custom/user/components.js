@@ -1,5 +1,4 @@
 var confirm_modal   = new bootstrap.Modal(document.getElementById("confirm_modal"), {});
-var components_tab_modal = new bootstrap.Modal(document.getElementById("components_tab_list"), {});
 var popover_content = document.getElementById("comment_options");
 var selected_comment_element = "";
 var comment_to_insert_reply = "";
@@ -11,7 +10,6 @@ const updateMessageCount = (event, message_form) => {
     event.target.maxLength = "250";
 
     message_form.querySelector(".char_count").textContent = `${event.target.value.length}/250`;
-
 }
 
 const scrollToElement = (selected_item) => {
@@ -566,6 +564,16 @@ const seeAllReplies = (event) => {
     });
 }
 
+const selectedComponentItem = (event) => {
+    let selected_element    = event.target;
+    let element_class_array = selected_element.classList;
+
+    if(element_class_array[ITEMS.first] === "component_item"){
+        document.getElementById("component_list_mobile").querySelector(".is_active").classList.remove("is_active");
+        selected_element.classList.add("is_active");
+    }
+}
+
 let show_other_replies_btn = document.getElementsByClassName("more_replies_btn");
 
 Array.from(show_other_replies_btn).forEach((element) => {
@@ -579,9 +587,10 @@ $(function(){
 Drog.on(document.querySelector(".comments_block_mobile"));
 
 document.querySelector(".reply_post_input").addEventListener("input", updatePostReplyInput);
-document.querySelector(".show_tabs_btn").addEventListener("click", () => {
-    components_tab_modal.show();
-});
 document.querySelector(".go_back_btn").addEventListener("click", () => {
     window.location.href = "/web-frontend/views/user/sections.html";
+});
+
+document.querySelectorAll(".component_item").forEach((component) => {
+    component.addEventListener("click", selectedComponentItem);
 });
